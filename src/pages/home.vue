@@ -107,7 +107,7 @@
 					<img class="star" src="../assets/star.png" />
 				</el-row>
 				<div class="block pagination">
-					<el-pagination background="#f9f9f9" layout="prev, pager, next" :total="50">
+					<el-pagination :background="true" layout="prev, pager, next" :total="50">
 					</el-pagination>
 				</div>
 			</el-col>

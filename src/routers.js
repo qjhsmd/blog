@@ -2,6 +2,7 @@ import home from './pages/home'
 import about from './pages/about'
 import article from './pages/article'
 import archive from './pages/archive'
+import addArticle from './pages/addArticle'
 import apply from './pages/apply'
 
 const routes = [
@@ -18,6 +19,11 @@ const routes = [
     path:'/about',
     name:'about',
     component:about
+},
+{
+    path:'/addArticle',
+    name:'addArticle',
+    component:addArticle
 },
 {
     path:'/archive',

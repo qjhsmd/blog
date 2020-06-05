@@ -1,7 +1,8 @@
 module.exports = {
     header: {
         home: 'Home',
-        archive: 'Archive',
+		archive: 'Archive',
+		addArticle:'write articles',
         about: 'About',
         language: 'Language',
         chinaese: '中文',

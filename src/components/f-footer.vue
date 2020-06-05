@@ -20,11 +20,11 @@
 				</div>
 				<div class="item">
 					<i class="el-icon-caret-right"></i>
-					fengziy@aliyun.com
+					qjh886@qq.com
 				</div>
 				<div class="item">
 					<i class="el-icon-caret-right"></i>
-					© fengziy-博客 | 渝ICP备17015355
+					© 以后 | 粤ICP备18056254号
 				</div>
 			</el-col>
 		</el-row>
@@ -34,7 +34,7 @@
 
 <script>
 export default {
-  name: 'footer'
+  name: 'f-footer'
 }
 </script>
 

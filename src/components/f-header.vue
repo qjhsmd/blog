@@ -1,11 +1,12 @@
 <template>
 	<div>
-		<el-menu :default-active="activeIndex" class="d-flex" mode="horizontal" router="true" type="flex">
+		<el-menu :default-active="activeIndex" class="d-flex" mode="horizontal" :router="true" type="flex">
 			<el-menu-item class="mr-auto">FZY</el-menu-item>
 			<el-menu-item index="/home">{{$t("header.home")}}</el-menu-item>
 			<el-menu-item index="/archive">{{$t("header.archive")}}</el-menu-item>
+			<el-menu-item index="/addArticle">{{$t("header.addArticle")}}</el-menu-item>
 			<el-menu-item index="/about">{{$t("header.about")}}</el-menu-item>
-			<el-submenu>
+			<el-submenu  index="">
 				<template slot="title">{{$t("header.language")}}</template>
 				<el-menu-item @click="toggleLang('zh')">{{$t("header.chinaese")}}</el-menu-item>
 				<el-menu-item @click="toggleLang('en')">{{$t("header.english")}}</el-menu-item>
@@ -20,6 +21,9 @@
 			return {
 				activeIndex: '/home'
 			};
+		},
+		created() {
+            this.activeIndex = this.$route.path
 		},
 		methods: {
 			toggleLang(lang) {

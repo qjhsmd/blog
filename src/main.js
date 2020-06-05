@@ -9,7 +9,9 @@ import './assets/style.css'
 import fHeader from './components/f-header'
 import fFooter from './components/f-footer'
 import i18n from './i18n/i18n'
+import API from '@/api'
 
+Vue.prototype.$API = API
 
 Vue.config.productionTip = false
 Vue.use(ElementUI)

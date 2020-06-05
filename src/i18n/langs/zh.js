@@ -1,7 +1,8 @@
 module.exports = {
     header: {
         home: '首页',
-        archive: '归档',
+		archive: '归档',
+		addArticle:'写文章',
         about: '关于',
         language: '语言',
         chinaese: '中文',
