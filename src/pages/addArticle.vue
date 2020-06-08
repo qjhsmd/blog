@@ -5,14 +5,17 @@
       <el-form-item label="活动名称">
         <el-input v-model="info.title"></el-input>
       </el-form-item>
-      <!-- <el-form-item label="活动区域">
-        <el-select v-model="content.region" placeholder="请选择活动区域">
-          <el-option label="区域一" value="shanghai"></el-option>
-          <el-option label="区域二" value="beijing"></el-option>
-        </el-select>
-      </el-form-item>-->
+      <el-form-item label="简单描述">
+        <el-input v-model="info.describe"></el-input>
+      </el-form-item>
+      <el-form-item label="文章分类">
+        <!-- <el-select v-model="info.classify_id" placeholder="请选择活动区域">
+          <el-option v-for="item in optios" :label="item.label" :value="item.value" :key="item.value"></el-option>
+        </el-select>-->
+        <el-cascader v-model="info.classify_id" :options="options" @change="handleChange"></el-cascader>
+      </el-form-item>
       <el-form-item label="活动形式">
-        <el-input type="textarea" v-model="info.content"></el-input>
+        <!-- <el-input type="textarea" v-model="info.content"></el-input> -->
         <Editor id="tinymce" v-model="info.content" :init="editorInit"></Editor>
       </el-form-item>
       <el-form-item>
@@ -45,10 +48,33 @@ export default {
     return {
       info: {
         title: "",
-        classify_id: 5,
-        classify_name: "VUE",
+        classify_id: [],
         content: ""
       },
+      options: [
+        {
+          value: 1,
+          label: "JAVA"
+        },
+        {
+          value: 2,
+          label: "C++"
+        },
+        {
+          value: 3,
+          label: "前端",
+          children: [
+            {
+              value: 4,
+              label: "VUE"
+            },
+            {
+              value: 5,
+              label: "REACT"
+            }
+          ]
+        }
+      ],
       editorInit: {
         language_url: "/tinymce/zh_CN.js",
         language: "zh_CN",
@@ -95,12 +121,23 @@ export default {
   },
 
   methods: {
+    handleChange(val) {
+      console.log(val);
+    },
     onSubmit() {
       this.$API
         .createArtcle(this.info)
         .then(res => {
           if (res.code === 0) {
-            console.log(res);
+            this.$message({
+              type: "success",
+              message: res.message
+            });
+          } else {
+            this.$message({
+              type: "error",
+              message: res.message
+            });
           }
         })
         .catch(() => {});

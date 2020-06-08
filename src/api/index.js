@@ -74,5 +74,8 @@ export default {
     createArtcle: (params) => {
         return axios.post(public_url + '/api/create_artcle', params)
     },
+    listArtcle: (params) => {
+        return axios.get(public_url + '/api/list_artcle', {params})
+    },
 
 }
