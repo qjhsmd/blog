@@ -36,7 +36,7 @@ const routes = [
     component:archive
 },
 {
-    path:'/article',
+    path:'/article/:id',
     name:'article',
     component:article
 },

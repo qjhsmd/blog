@@ -2,7 +2,6 @@
   <div class="home">
     <el-row id="artList" type="flex" justify="space-around">
       <el-col :span="16">
-       
         <el-row class="art-item" v-for="(item,index) in list" :key="index">
           <el-card shadow="hover">
             <h5>
@@ -23,13 +22,14 @@
                 <img class="art-banner" src="../assets/vue.jpg" />
               </div>
               <div class="side-abstract">
-                <div class="art-abstract" >{{item.artcle_describe}}</div>
+                <div class="art-abstract">{{item.artcle_describe}}</div>
                 <div class="art-more">
-                  <router-link to="/article" tag="span">
-                    <el-button plain>{{$t('home.readMore')}}</el-button>
+                  <router-link :to="'/article/'+item.id" tag="span">
+                    <el-button plain >{{$t('home.readMore')}}</el-button>
                   </router-link>
                   <div class="view">
-                    <i class="el-icon-view"></i> {{item.view_count}}
+                    <i class="el-icon-view"></i>
+                    {{item.view_count}}
                   </div>
                 </div>
               </div>
@@ -66,7 +66,7 @@
 <script>
 import friend from "../components/friend";
 import tag from "../components/tag";
-import {formatDate} from "@/tool/tools.js"
+import { formatDate } from "@/tool/tools.js";
 export default {
   name: "home",
   components: {
@@ -78,16 +78,18 @@ export default {
       params: {
         page: 1,
         pageSize: 10
-	  },
+      },
       total: 0,
       list: []
     };
   },
   created() {
-	this.loading();
-	console.log(formatDate(new Date()))
+    this.loading();
   },
   methods: {
+    goto(item) {
+      console.log(item);
+    },
     handleCurrentChange(val) {
       this.params.page = val;
       this.loading();
@@ -101,10 +103,10 @@ export default {
         .listArtcle(this.params)
         .then(res => {
           if (res.code === 0) {
-			this.list = res.data.list;
-			this.list.forEach((item)=>{
-				item.creat_time =  formatDate (new Date( item.creat_time))
-			})
+            this.list = res.data.list;
+            this.list.forEach(item => {
+              item.creat_time = formatDate(new Date(item.creat_time));
+            });
             this.total = res.data.total;
             this.$message({
               type: "success",

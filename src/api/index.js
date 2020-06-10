@@ -77,5 +77,8 @@ export default {
     listArtcle: (params) => {
         return axios.get(public_url + '/api/list_artcle', {params})
     },
+    artcleDetail: (params) => {
+        return axios.get(public_url + '/api/artcle_detail', {params})
+    },
 
 }
