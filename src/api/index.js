@@ -4,7 +4,7 @@
 import axios from 'axios'
 // import store from '@/store/user'
 //  import { Message } from 'element-ui'
-const public_url = 'http://192.168.1.30:9999'//
+const public_url = 'http://192.168.3.104:9999'//
 axios.defaults.withCredentials = true;
 // 添加响应拦截器
 axios.interceptors.response.use(function (response) {
